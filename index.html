@@ -153,6 +153,27 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
 .rung .tot { color: var(--ink); font-weight: 700; }
 @media (max-width: 640px) { .ladder { grid-template-columns: repeat(4, 1fr); } }
 .legend { color: var(--ink-dim); font-size: 0.95rem; margin-top: 8px; }
+
+/* CR */
+.xp { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-top: 14px; font-size: 1rem; }
+.xp th, .xp td { padding: 7px 10px; text-align: right; border-bottom: 1px solid rgba(217,180,95,0.18); }
+.xp th:first-child, .xp td:first-child { text-align: left; }
+.xp th { font-family: var(--display); color: var(--gold-soft); font-size: 0.9rem; letter-spacing: 0.05em; }
+.tablewrap { overflow-x: auto; }
+.cr-cols { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin-top: 10px; }
+@media (max-width: 760px) { .cr-cols { grid-template-columns: 1fr; } }
+.calc { background: var(--sea-2); border: 1px solid var(--gold); border-radius: 14px; padding: 18px; margin-top: 22px; display: grid; gap: 14px; }
+.calc-row { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.calc label { font-size: 0.95rem; color: var(--ink-dim); display: flex; gap: 8px; align-items: center; }
+.calc select { font: inherit; background: var(--sea); color: var(--ink); border: 1px solid rgba(217,180,95,0.5); border-radius: 8px; padding: 6px 10px; }
+.meter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.seg { border-radius: 8px; padding: 8px 6px; text-align: center; font-size: 0.9rem; background: rgba(255,255,255,0.05); color: var(--ink-dim); border: 1px solid transparent; }
+.seg b { display: block; font-variant-numeric: tabular-nums; color: var(--ink); }
+.seg.on { border-color: var(--gold-soft); background: rgba(217,180,95,0.18); color: var(--ink); }
+.seg.on.deadly { border-color: var(--bad); background: rgba(224,122,106,0.2); }
+.verdict { font-size: 1.1rem; }
+.ex { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 14px; }
+.ex .card b { font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
@@ -184,7 +205,7 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
   </div>
 </header>
 
-<nav aria-label="Inhoud"><ol><li><a href="#cyclus">De cyclus</a></li><li><a href="#dorp">Het dorp</a></li><li><a href="#prikbord">Het prikbord</a></li><li><a href="#levelen">Levelen</a></li><li><a href="#regels">Afspraken</a></li></ol></nav>
+<nav aria-label="Inhoud"><ol><li><a href="#cyclus">De cyclus</a></li><li><a href="#dorp">Het dorp</a></li><li><a href="#prikbord">Het prikbord</a></li><li><a href="#levelen">Levelen</a></li><li><a href="#regels">Afspraken</a></li><li><a href="#gevaar">Gevaar (CR)</a></li></ol></nav>
 
 <main class="wrap">
 <section id="cyclus">
@@ -224,7 +245,7 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="note"><h3>Gezocht</h3><p>Iemand zoekt een voorwerp, materiaal of een vermiste persoon.</p></div>
     <div class="note"><h3>Gerucht</h3><p>Wat er verteld wordt. Waar of niet? Zoek het zelf uit.</p></div>
   </div>
-  <p class="dim" style="margin-top:18px">Bij een avontuur staat altijd een levelbereik, hoeveel sessies het naar verwachting duurt en hoeveel AP het oplevert. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
+  <p class="dim" style="margin-top:18px">Bij een avontuur staat altijd het gevaar (CR, zie onderaan), een levelbereik, hoeveel sessies het naar verwachting duurt en hoeveel AP het oplevert. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
 
   </section>
 <section id="levelen">
@@ -270,6 +291,57 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Deel na elk avontuur in De Herberg</b> wat je zag en ontdekte.</div></li>
   </ul>
 </section>
+<section id="gevaar">
+  <div class="chapter">Deel 6</div>
+  <h2>Gevaar: de CR</h2>
+  <div class="read">
+    <p>Bij elk briefje staat een <span class="en">CR</span> (Challenge Rating): hoe gevaarlijk het is. Elke CR is een aantal XP waard. Je party heeft samen een XP-budget, afhankelijk van ieders level. Leg die twee naast elkaar en je weet of je party het aankan.</p>
+  </div>
+
+  <div class="cr-cols">
+    <div class="tablewrap">
+      <h3>Wat je party aankan, per personage</h3>
+      <table class="xp">
+        <thead><tr><th>Level</th><th>Licht</th><th>Gemiddeld</th><th>Zwaar</th></tr></thead>
+        <tbody><tr><td>Level 1</td><td>50</td><td>75</td><td>100</td></tr><tr><td>Level 2</td><td>100</td><td>150</td><td>200</td></tr><tr><td>Level 3</td><td>150</td><td>225</td><td>400</td></tr><tr><td>Level 4</td><td>250</td><td>375</td><td>500</td></tr><tr><td>Level 5</td><td>500</td><td>750</td><td>1.100</td></tr><tr><td>Level 6</td><td>600</td><td>1.000</td><td>1.400</td></tr><tr><td>Level 7</td><td>750</td><td>1.300</td><td>1.700</td></tr><tr><td>Level 8</td><td>1.000</td><td>1.700</td><td>2.100</td></tr></tbody>
+      </table>
+    </div>
+    <div class="tablewrap">
+      <h3>Wat het gevaar waard is</h3>
+      <table class="xp">
+        <thead><tr><th>CR</th><th>XP</th></tr></thead>
+        <tbody><tr><td>CR 1/8</td><td>25</td></tr><tr><td>CR 1/4</td><td>50</td></tr><tr><td>CR 1/2</td><td>100</td></tr><tr><td>CR 1</td><td>200</td></tr><tr><td>CR 2</td><td>450</td></tr><tr><td>CR 3</td><td>700</td></tr><tr><td>CR 4</td><td>1.100</td></tr><tr><td>CR 5</td><td>1.800</td></tr><tr><td>CR 6</td><td>2.300</td></tr><tr><td>CR 7</td><td>2.900</td></tr><tr><td>CR 8</td><td>3.900</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="margin-top:26px">Voorbeeld: CR 2 (450 XP)</h3>
+  <div class="ex">
+    <div class="card"><h3>2× level 1 + 2× level 2</h3><p>Gemiddeld budget: 2 × 75 + 2 × 150 = <b>450</b>. Precies goed: een gemiddeld gevecht.</p></div>
+    <div class="card"><h3>3× level 2</h3><p>Gemiddeld budget: 3 × 150 = <b>450</b>. Ook precies goed, met één speler minder.</p></div>
+    <div class="card"><h3>4× level 1</h3><p>Zwaar budget: 4 × 100 = <b>400</b>. CR 2 gaat daarover: levensgevaarlijk.</p></div>
+  </div>
+
+  <div class="calc" role="group" aria-labelledby="calc-title">
+    <h3 id="calc-title">Reken het zelf uit</h3>
+    <div class="calc-row">
+      <label for="p1">Speler 1 <select id="p1"><option value="0">niemand</option><option value="1">level 1</option><option value="2">level 2</option><option value="3">level 3</option><option value="4">level 4</option><option value="5">level 5</option><option value="6">level 6</option><option value="7">level 7</option><option value="8">level 8</option></select></label>
+      <label for="p2">Speler 2 <select id="p2"><option value="0">niemand</option><option value="1">level 1</option><option value="2">level 2</option><option value="3">level 3</option><option value="4">level 4</option><option value="5">level 5</option><option value="6">level 6</option><option value="7">level 7</option><option value="8">level 8</option></select></label>
+      <label for="p3">Speler 3 <select id="p3"><option value="0">niemand</option><option value="1">level 1</option><option value="2">level 2</option><option value="3">level 3</option><option value="4">level 4</option><option value="5">level 5</option><option value="6">level 6</option><option value="7">level 7</option><option value="8">level 8</option></select></label>
+      <label for="p4">Speler 4 <select id="p4"><option value="0">niemand</option><option value="1">level 1</option><option value="2">level 2</option><option value="3">level 3</option><option value="4">level 4</option><option value="5">level 5</option><option value="6">level 6</option><option value="7">level 7</option><option value="8">level 8</option></select></label>
+    </div>
+    <div class="calc-row"><label for="crsel">Gevaar op het briefje <select id="crsel"><option value="25">CR 1/8 (25 XP)</option><option value="50">CR 1/4 (50 XP)</option><option value="100">CR 1/2 (100 XP)</option><option value="200">CR 1 (200 XP)</option><option value="450" selected>CR 2 (450 XP)</option><option value="700">CR 3 (700 XP)</option><option value="1100">CR 4 (1100 XP)</option><option value="1800">CR 5 (1800 XP)</option><option value="2300">CR 6 (2300 XP)</option><option value="2900">CR 7 (2900 XP)</option><option value="3900">CR 8 (3900 XP)</option></select></label></div>
+    <div class="meter" aria-hidden="true">
+      <div class="seg" id="s0">Licht<b id="b0">0</b></div>
+      <div class="seg" id="s1">Gemiddeld<b id="b1">0</b></div>
+      <div class="seg" id="s2">Zwaar<b id="b2">0</b></div>
+      <div class="seg deadly" id="s3">Levensgevaarlijk<b>meer</b></div>
+    </div>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+
+  <div class="callout"><p><b>Opgelet.</b> Eén monster met een CR hoger dan je level kan een personage in één klap neerleggen, ook als het budget klopt. De CR is een inschatting, geen belofte. Vluchten is ook een optie.</p></div>
+</section>
 <section id="nieuw">
   <div class="callout"><p><b>Nieuw in D&amp;D?</b> Lees eerst de basis: <a href="beginners.html">D&amp;D voor beginners</a>.</p></div>
 </section>
@@ -280,5 +352,27 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
   <div class="wrap">Vragen? Stel ze in 🍺 De Herberg. Tot in Port Haven.</div>
 </footer>
 
+<script>
+(function () {
+  var B = {1:[50,75,100],2:[100,150,200],3:[150,225,400],4:[250,375,500],5:[500,750,1100],6:[600,1000,1400],7:[750,1300,1700],8:[1000,1700,2100]};
+  var ids = ['p1','p2','p3','p4'];
+  var start = ['1','1','2','2'];
+  ids.forEach(function (id, i) { document.getElementById(id).value = start[i]; });
+  function fmt(n) { return n.toLocaleString('nl-BE'); }
+  function update() {
+    var t = [0,0,0], n = 0;
+    ids.forEach(function (id) { var l = +document.getElementById(id).value; if (l) { n++; for (var k=0;k<3;k++) t[k] += B[l][k]; } });
+    var xp = +document.getElementById('crsel').value;
+    for (var k=0;k<3;k++) document.getElementById('b'+k).textContent = fmt(t[k]);
+    var idx = n === 0 ? -1 : (xp <= t[0] ? 0 : xp <= t[1] ? 1 : xp <= t[2] ? 2 : 3);
+    for (var j=0;j<4;j++) document.getElementById('s'+j).classList.toggle('on', j === idx);
+    var names = ['licht','gemiddeld','zwaar','levensgevaarlijk'];
+    document.getElementById('verdict').innerHTML = n === 0 ? 'Kies minstens één speler.' :
+      'Gevaar van <b>' + fmt(xp) + ' XP</b> voor deze party: <b>' + names[idx] + '</b>.';
+  }
+  ids.concat(['crsel']).forEach(function (id) { document.getElementById(id).addEventListener('change', update); });
+  update();
+})();
+</script>
 </body>
 </html>
