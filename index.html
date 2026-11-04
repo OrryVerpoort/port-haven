@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zo werkt Port Haven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Eén wereld: diepzee-nacht met goud en perkament, zoals de community-logo's.
+     Layout: smalle leeskolom, secties als hoofdstukken, schema's breken eruit. */
+  --sea: #0e242a;
+  --sea-2: #16353d;
+  --sea-3: #1f4750;
+  --gold: #d9b45f;
+  --gold-soft: #f0d48a;
+  --parchment: #f3e6c7;
+  --ink: #e9eef0;
+  --ink-dim: #a9bcc0;
+  --ok: #7fc59a;
+  --bad: #e07a6a;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body {
+  margin: 0;
+  background: var(--sea);
+  background-image: radial-gradient(ellipse at 50% -10%, #23505a 0%, transparent 60%);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+a { color: var(--gold-soft); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+.read { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--display); color: var(--gold-soft); text-wrap: balance; line-height: 1.2; font-weight: 700; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; letter-spacing: 0.04em; }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin: 0 0 0.6rem; letter-spacing: 0.03em; }
+h3 { font-size: 1.1rem; margin: 0 0 0.3rem; letter-spacing: 0.04em; }
+p { margin: 0 0 1rem; }
+.dim { color: var(--ink-dim); }
+.en { font-style: italic; color: var(--ink-dim); }
+
+/* hero */
+header { padding: 48px 0 28px; }
+.hero { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.hero svg { width: 120px; height: 120px; flex: none; }
+.hero .kicker { font-family: var(--display); color: var(--gold); letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px; }
+.hero p { margin: 10px 0 0; max-width: 52ch; color: var(--ink-dim); }
+
+nav { position: sticky; top: 0; z-index: 5; background: rgba(14,36,42,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(217,180,95,0.25); }
+nav ol { list-style: none; margin: 0 auto; padding: 10px 20px; max-width: 980px; display: flex; gap: 6px 18px; flex-wrap: wrap; font-size: 0.95rem; counter-reset: n; }
+nav li { counter-increment: n; }
+nav a { text-decoration: none; color: var(--ink-dim); }
+nav a::before { content: counter(n) ". "; color: var(--gold); }
+nav a:hover { color: var(--gold-soft); }
+
+section { padding: 44px 0; border-bottom: 1px solid rgba(217,180,95,0.14); }
+section:last-of-type { border-bottom: 0; }
+.chapter { font-family: var(--display); color: var(--gold); font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; }
+
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 18px; }
+.card { background: var(--sea-2); border: 1px solid rgba(217,180,95,0.22); border-radius: 12px; padding: 16px 18px; }
+.card p { margin: 0; color: var(--ink-dim); font-size: 1rem; }
+
+/* dice */
+.dice { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-top: 18px; }
+.die { text-align: center; background: var(--sea-2); border-radius: 12px; padding: 14px 8px 10px; border: 1px solid rgba(217,180,95,0.18); }
+.die svg { width: 56px; height: 56px; }
+.die b { display: block; font-family: var(--display); color: var(--gold-soft); margin-top: 4px; }
+.die span { font-size: 0.9rem; color: var(--ink-dim); }
+.die.main { border-color: var(--gold); background: var(--sea-3); }
+
+/* kernregel */
+.formula { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
+.tile { background: var(--parchment); color: #2c1d0e; border-radius: 12px; padding: 12px 18px; text-align: center; min-width: 120px; box-shadow: 0 6px 0 rgba(0,0,0,0.25); }
+.tile b { display: block; font-family: var(--display); font-size: 1.6rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile small { font-size: 0.85rem; color: #6b5233; }
+.op { font-family: var(--display); font-size: 2rem; color: var(--gold); }
+.roller { background: var(--sea-2); border: 1px solid var(--gold); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
+.roller-row { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.roller label { font-size: 0.95rem; color: var(--ink-dim); }
+.roller select { font: inherit; background: var(--sea); color: var(--ink); border: 1px solid rgba(217,180,95,0.5); border-radius: 8px; padding: 6px 10px; }
+button.roll { font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; background: var(--gold); color: #2b1c08; border: 0; border-radius: 999px; padding: 10px 22px; cursor: pointer; }
+button.roll:hover { background: var(--gold-soft); }
+.result { font-size: 1.15rem; min-height: 1.8em; font-variant-numeric: tabular-nums; }
+.result .yes { color: var(--ok); font-weight: 700; }
+.result .no { color: var(--bad); font-weight: 700; }
+.kinds { margin-top: 18px; }
+
+.callout { border-left: 4px solid var(--gold); background: rgba(217,180,95,0.08); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 18px 0; }
+.callout p:last-child { margin: 0; }
+
+/* abilities */
+.abil { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
+@media (max-width: 560px) { .abil { grid-template-columns: repeat(2, 1fr); } }
+.ab { background: var(--sea-2); border-radius: 12px; padding: 12px 14px; border-top: 3px solid var(--gold); }
+.ab b { font-family: var(--display); color: var(--gold-soft); letter-spacing: 0.08em; }
+.ab div { font-size: 0.95rem; color: var(--ink-dim); }
+
+/* beurt */
+.turn { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 18px; }
+.turn .card { position: relative; padding-top: 44px; }
+.badge { position: absolute; top: 12px; left: 18px; font-family: var(--display); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sea); background: var(--gold); border-radius: 999px; padding: 2px 10px; }
+.badge.opt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+
+/* cyclus */
+.cycle { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); counter-reset: s; }
+.cycle li { counter-increment: s; background: var(--sea-2); border: 1px solid rgba(217,180,95,0.25); border-radius: 14px; padding: 16px 18px 16px 64px; position: relative; }
+.cycle li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--sea); font-family: var(--display); font-weight: 700; display: grid; place-items: center; }
+.cycle li p { margin: 0; font-size: 1rem; color: var(--ink-dim); }
+.cycle li.out { background: #2a2016; border-color: rgba(240,212,138,0.45); }
+.loop { margin-top: 12px; text-align: center; color: var(--gold); font-family: var(--display); letter-spacing: 0.08em; }
+@media (max-width: 760px) { .cycle { grid-template-columns: 1fr; } }
+
+.board { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 18px; }
+.note { background: var(--parchment); color: #2c1d0e; border-radius: 4px; padding: 26px 16px 16px; position: relative; box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
+.note:nth-child(odd) { transform: rotate(-1.2deg); }
+.note:nth-child(even) { transform: rotate(1deg); }
+.note::before { content: ""; position: absolute; top: 8px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #f6e2a4, #a9853a); }
+.note h3 { color: #5a1d22; }
+.note p { margin: 0; font-size: 1rem; }
+
+/* checklist */
+.check { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+.check li { display: flex; gap: 12px; align-items: flex-start; background: var(--sea-2); border-radius: 10px; padding: 12px 14px; }
+.check svg { flex: none; width: 22px; height: 22px; margin-top: 3px; }
+
+/* woordenlijst */
+dl.words { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 18px 0 0; }
+dl.words dt { font-family: var(--display); color: var(--gold-soft); font-weight: 700; }
+dl.words dd { margin: 0; color: var(--ink-dim); }
+@media (max-width: 480px) { dl.words { grid-template-columns: 1fr; gap: 2px; } dl.words dd { margin-bottom: 10px; } }
+
+footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hero">
+    <svg viewBox="0 0 1024 1024" aria-hidden="true">
+      <defs>
+        <radialGradient id="hsea" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#2b5c63"/><stop offset="0.6" stop-color="#173a42"/><stop offset="1" stop-color="#0b1f25"/></radialGradient>
+        <linearGradient id="hgold" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="880"><stop offset="0" stop-color="#f0d48a"/><stop offset="0.55" stop-color="#d9b45f"/><stop offset="1" stop-color="#a9853a"/></linearGradient>
+      </defs>
+      <circle cx="512" cy="512" r="440" fill="url(#hsea)"/>
+      <g transform="translate(512 506) scale(1.06) translate(-512 -530)">
+        <g fill="none" stroke="url(#hgold)" stroke-linecap="round">
+          <circle cx="512" cy="292" r="40" stroke-width="24"/>
+          <line x1="512" y1="334" x2="512" y2="760" stroke-width="30"/>
+          <line x1="402" y1="400" x2="622" y2="400" stroke-width="28"/>
+          <path d="M 318 590 Q 326 772 512 778 Q 698 772 706 590" stroke-width="28"/>
+        </g>
+        <g fill="url(#hgold)"><polygon points="286,628 318,548 362,616"/><polygon points="738,628 706,548 662,616"/></g>
+      </g>
+      <circle cx="512" cy="512" r="440" fill="none" stroke="url(#hgold)" stroke-width="12"/>
+    </svg>
+    <div>
+      <div class="kicker">Het Verloren Land</div>
+      <h1>Zo werkt Port Haven</h1>
+      <p>De mist is opgetrokken en het Verloren Land ligt open. Port Haven is een mini dorpje aan de enige veilige baai van de kust. Hier lees je hoe onze campagne werkt.</p>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Inhoud"><ol><li><a href="#cyclus">De cyclus</a></li><li><a href="#prikbord">Het prikbord</a></li><li><a href="#regels">Afspraken</a></li></ol></nav>
+
+<main class="wrap">
+<section id="cyclus">
+  <div class="chapter">Deel 1</div>
+  <h2>De cyclus</h2>
+  <div class="read">
+    
+    <p>Avonturen gebeuren altijd buiten het dorp. Een avontuur duurt 1 à 3 sessies en zo gaat het rond:</p>
+  </div>
+
+  <ol class="cycle">
+    <li><h3>Prikbord</h3><p>Er hangt een job, bounty, gezochte zaak of gerucht in 📌 Prikbord.</p></li>
+    <li><h3>Party vormen</h3><p>Zoek in 🍺 De Herberg een groepje van 3 à 4 spelers.</p></li>
+    <li><h3>Data afspreken</h3><p>Samen met de DM. Liefst 1 sessie per week, hooguit om de 2 weken, plus een paar reservedata.</p></li>
+    <li class="out"><h3>Op avontuur</h3><p>Buiten het dorp, in het onbekende. 1 à 3 sessies.</p></li>
+    <li><h3>Terug in Port Haven</h3><p>Elk avontuur eindigt terug in het dorp.</p></li>
+    <li><h3>Vertel wat je zag</h3><p>Deel in De Herberg wat je ontdekte. Dat is alles wat de anderen weten.</p></li>
+  </ol>
+  <div class="loop">↺ en dan hangt er iets nieuws aan het prikbord</div>
+
+  </section>
+<section id="prikbord">
+  <div class="chapter">Deel 2</div>
+  <h2>Het prikbord</h2>
+<div class="read"><p>In 📌 Prikbord hangt de DM vier soorten briefjes. Alleen de DM post daar; reageren doe je in 🍺 De Herberg.</p></div>
+  <div class="board">
+    <div class="note"><h3>Job</h3><p>Een opdracht met een opdrachtgever en een beloning.</p></div>
+    <div class="note"><h3>Bounty</h3><p>Een premie op een doelwit.</p></div>
+    <div class="note"><h3>Gezocht</h3><p>Iemand zoekt een voorwerp, materiaal of een vermiste persoon.</p></div>
+    <div class="note"><h3>Gerucht</h3><p>Wat er verteld wordt. Waar of niet? Zoek het zelf uit.</p></div>
+  </div>
+  <p class="dim" style="margin-top:18px">Bij een avontuur staat altijd een levelbereik en hoeveel sessies het naar verwachting duurt. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
+
+  </section>
+<section id="regels">
+  <div class="chapter">Deel 3</div>
+  <h2>Afspraken</h2>
+  <div class="grid">
+    <div class="card"><h3>Open tafel</h3><p>Een pool van spelers. Elk avontuur speelt een ander groepje van 3 à 4. Iedereen start op level 1, met D&amp;D 5.5 (2024).</p></div>
+    <div class="card"><h3>Data</h3><p>Afspreken samen met de DM. Sessies liggen dicht bij elkaar: liefst 1 per week, hooguit om de 2 weken. Plus een paar reservedata; wat niet nodig is, valt weer vrij.</p></div>
+    <div class="card"><h3>Geen vaste avond</h3><p>Elk avontuur krijgt zijn eigen data en dag. Er kunnen rustweken tussen zitten.</p></div>
+    <div class="card"><h3>Altijd terug</h3><p>Elk avontuur eindigt terug in Port Haven. In het dorp zelf gebeuren geen avonturen.</p></div>
+  </div>
+  <div class="callout">
+    <p><b>Jullie houden zelf de geschiedenis bij.</b> De DM vertelt niet na wat er gebeurd is. Wat jullie opschrijven en aan elkaar vertellen, is wat het dorp weet. Fout onthouden? Pech. Neem dus notities.</p>
+  </div>
+
+  <ul class="check">
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Neem notities.</b> Wat je niet opschrijft of vertelt, vergeet het dorp.</div></li>
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Deel na elk avontuur in De Herberg</b> wat je zag en ontdekte.</div></li>
+  </ul>
+</section>
+<section id="nieuw">
+  <div class="callout"><p><b>Nieuw in D&amp;D?</b> Lees eerst de basis: <a href="beginners.html">D&amp;D voor beginners</a>.</p></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Vragen? Stel ze in 🍺 De Herberg. Tot in Port Haven.</div>
+</footer>
+
+</body>
+</html>
