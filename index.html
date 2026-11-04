@@ -142,6 +142,17 @@ dl.words dd { margin: 0; color: var(--ink-dim); }
 @media (max-width: 480px) { dl.words { grid-template-columns: 1fr; gap: 2px; } dl.words dd { margin-bottom: 10px; } }
 
 footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
+
+/* levelen */
+.pts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.pts .tile { min-width: 150px; }
+.ladder { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 18px; align-items: end; }
+.rung { background: var(--sea-2); border: 1px solid rgba(217,180,95,0.25); border-radius: 10px; text-align: center; padding: 10px 4px; }
+.rung b { display: block; font-family: var(--display); color: var(--gold-soft); font-size: 1.3rem; }
+.rung small { display: block; color: var(--ink-dim); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.rung .tot { color: var(--ink); font-weight: 700; }
+@media (max-width: 640px) { .ladder { grid-template-columns: repeat(4, 1fr); } }
+.legend { color: var(--ink-dim); font-size: 0.95rem; margin-top: 8px; }
 </style>
 </head>
 <body>
@@ -173,7 +184,7 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
   </div>
 </header>
 
-<nav aria-label="Inhoud"><ol><li><a href="#cyclus">De cyclus</a></li><li><a href="#prikbord">Het prikbord</a></li><li><a href="#regels">Afspraken</a></li></ol></nav>
+<nav aria-label="Inhoud"><ol><li><a href="#cyclus">De cyclus</a></li><li><a href="#dorp">Het dorp</a></li><li><a href="#prikbord">Het prikbord</a></li><li><a href="#levelen">Levelen</a></li><li><a href="#regels">Afspraken</a></li></ol></nav>
 
 <main class="wrap">
 <section id="cyclus">
@@ -195,8 +206,16 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
   <div class="loop">↺ en dan hangt er iets nieuws aan het prikbord</div>
 
   </section>
-<section id="prikbord">
+<section id="dorp">
   <div class="chapter">Deel 2</div>
+  <h2>Het dorp</h2>
+  <div class="read">
+    <p>Port Haven is nog piepklein: een herberg, met het prikbord, en wat tenten om in te slapen. Meer is er niet. Nog niet.</p>
+    <p>Wat jullie buiten het dorp ontdekken en veilig maken, komt terug naar Port Haven. Zo groeit het dorp, stukje per stukje, ook op de kaart. Hoe Port Haven er over een jaar uitziet, hangt helemaal van jullie af.</p>
+  </div>
+</section>
+<section id="prikbord">
+  <div class="chapter">Deel 3</div>
   <h2>Het prikbord</h2>
 <div class="read"><p>In 📌 Prikbord hangt de DM vier soorten briefjes. Alleen de DM post daar; reageren doe je in 🍺 De Herberg.</p></div>
   <div class="board">
@@ -205,14 +224,39 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="note"><h3>Gezocht</h3><p>Iemand zoekt een voorwerp, materiaal of een vermiste persoon.</p></div>
     <div class="note"><h3>Gerucht</h3><p>Wat er verteld wordt. Waar of niet? Zoek het zelf uit.</p></div>
   </div>
-  <p class="dim" style="margin-top:18px">Bij een avontuur staat altijd een levelbereik en hoeveel sessies het naar verwachting duurt. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
+  <p class="dim" style="margin-top:18px">Bij een avontuur staat altijd een levelbereik, hoeveel sessies het naar verwachting duurt en hoeveel AP het oplevert. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
 
   </section>
+<section id="levelen">
+  <div class="chapter">Deel 4</div>
+  <h2>Levelen</h2>
+  <div class="read"><p>Iedereen start op level 1. Je stijgt in level met <b>Adventure Points (AP)</b>. Die krijg je per avontuur, volgens hoe lang het gepland is:</p></div>
+  <div class="pts">
+    <div class="tile"><b>1 AP</b><small>avontuur van 1 avond</small></div>
+    <div class="tile"><b>2 AP</b><small>avontuur van 2 avonden</small></div>
+    <div class="tile"><b>3 AP</b><small>avontuur van 3 avonden</small></div>
+  </div>
+  <p class="dim" style="margin-top:14px">De geplande lengte staat op het prikbord. Sneller klaar? Je krijgt toch alle AP. Langer bezig? Er komen geen AP bij. Mislukt of afgebroken? Dan krijg je de helft: je hebt nog steeds iets gedaan. Halve AP worden bewaard.</p>
+
+  <h3 style="margin-top:24px">Wat kost een level?</h3>
+  <div class="ladder" aria-label="Levels 2 tot 8 met kost en totaal aantal AP"><div class="rung" style="min-height:94px"><small>level</small><b>2</b><small>kost 1</small><small class="tot">totaal 1</small></div><div class="rung" style="min-height:102px"><small>level</small><b>3</b><small>kost 2</small><small class="tot">totaal 3</small></div><div class="rung" style="min-height:114px"><small>level</small><b>4</b><small>kost 3</small><small class="tot">totaal 6</small></div><div class="rung" style="min-height:130px"><small>level</small><b>5</b><small>kost 4</small><small class="tot">totaal 10</small></div><div class="rung" style="min-height:146px"><small>level</small><b>6</b><small>kost 4</small><small class="tot">totaal 14</small></div><div class="rung" style="min-height:166px"><small>level</small><b>7</b><small>kost 5</small><small class="tot">totaal 19</small></div><div class="rung" style="min-height:186px"><small>level</small><b>8</b><small>kost 5</small><small class="tot">totaal 24</small></div></div>
+  <p class="legend">Voorbeeld: voor level 5 heb je in totaal 10 AP nodig.</p>
+
+  <div class="grid">
+    <div class="card"><h3>Alleen in Port Haven</h3><p>Je levelt alleen als je terug in het dorp bent, nooit midden in een avontuur.</p></div>
+    <div class="card"><h3>Eén level per keer</h3><p>Per terugkeer stijg je hooguit 1 level. AP die overblijven, hou je voor de volgende keer.</p></div>
+    <div class="card"><h3>Afhaken telt niet</h3><p>Wie halverwege een avontuur afhaakt, krijgt er geen AP voor. Invallen kan niet: de party ligt vast bij de start.</p></div>
+  </div>
+
+  <div class="callout">
+    <p><b>Story Points (SP).</b> Wie kennis deelt, wordt beloond: de kaart aanvullen, notities delen, een gerucht doorgeven. Dat levert 1 SP per bijdrage op, met een maximum van 2 per avontuur. Spaar ze: later zijn ze iets waard.</p>
+  </div>
+</section>
 <section id="regels">
-  <div class="chapter">Deel 3</div>
+  <div class="chapter">Deel 5</div>
   <h2>Afspraken</h2>
   <div class="grid">
-    <div class="card"><h3>Open tafel</h3><p>Een pool van spelers. Elk avontuur speelt een ander groepje van 3 à 4. Iedereen start op level 1, met D&amp;D 5.5 (2024).</p></div>
+    <div class="card"><h3>Open tafel</h3><p>Een pool van spelers. Elk avontuur speelt een ander groepje van 3 à 4. We spelen met D&amp;D 5.5 (2024).</p></div>
     <div class="card"><h3>Data</h3><p>Afspreken samen met de DM. Sessies liggen dicht bij elkaar: liefst 1 per week, hooguit om de 2 weken. Plus een paar reservedata; wat niet nodig is, valt weer vrij.</p></div>
     <div class="card"><h3>Geen vaste avond</h3><p>Elk avontuur krijgt zijn eigen data en dag. Er kunnen rustweken tussen zitten.</p></div>
     <div class="card"><h3>Altijd terug</h3><p>Elk avontuur eindigt terug in Port Haven. In het dorp zelf gebeuren geen avonturen.</p></div>
