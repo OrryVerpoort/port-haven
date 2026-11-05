@@ -7,7 +7,7 @@
   events:
   - type: PUSH
     refs:
-    - refs/tags/*
+    - refs/heads/main
   actions:
   - action: Deploy production
     type: SSH_COMMAND
