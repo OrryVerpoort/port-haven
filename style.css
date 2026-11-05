@@ -113,7 +113,7 @@ section { padding: var(--space-44) 0; border-bottom: 1px solid var(--line-faint)
 .grid { display: grid; gap: var(--space-14); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: var(--space-18); }
 .card { background: var(--sea-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-16) var(--space-18); position: relative; }
 .card p { margin: 0; color: var(--ink-dim); font-size: 1rem; }
-.card.has-badge { padding-top: var(--space-44); }
+.card.has-badge, .turn .card { padding-top: var(--space-44); }
 .badge { position: absolute; top: var(--space-12); left: var(--space-18); font-family: var(--display); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sea); background: var(--gold); border-radius: var(--radius-pill); padding: 2px var(--space-10); }
 .badge.opt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 
@@ -272,6 +272,5 @@ footer p { margin: 0 0 4px; }
   .signboard nav, .onpage, .roller, .calc, footer { display: none; }
   .card, .cycle li, .note, details { break-inside: avoid; box-shadow: none; }
   .note { transform: none; border: 1px solid #ccc; }
-  .faq details { display: block; }
   a { color: inherit; text-decoration: none; }
 }

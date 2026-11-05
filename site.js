@@ -9,6 +9,17 @@
     });
   }
 
+  // Afdrukken: dichte FAQ-items tijdelijk openen, zodat de antwoorden mee op papier staan
+  var closedOnPrint = [];
+  window.addEventListener('beforeprint', function () {
+    closedOnPrint = Array.prototype.filter.call(document.querySelectorAll('details'), function (d) { return !d.open; });
+    closedOnPrint.forEach(function (d) { d.open = true; });
+  });
+  window.addEventListener('afterprint', function () {
+    closedOnPrint.forEach(function (d) { d.open = false; });
+    closedOnPrint = [];
+  });
+
   // D&D spelen: de d20 gooien
   var rollBtn = document.getElementById('rollBtn');
   if (rollBtn) {
