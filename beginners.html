@@ -2,183 +2,39 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D&D voor beginners</title>
+<meta name="robots" content="noindex, nofollow">
+<title>D&amp;D spelen · Port Haven</title>
+<meta name="description" content="D&D voor beginners: dobbelstenen, de kernregel, je personage en je beurt.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Port Haven">
+<meta property="og:title" content="D&amp;D spelen · Port Haven">
+<meta property="og:description" content="D&D voor beginners: dobbelstenen, de kernregel, je personage en je beurt.">
+<meta property="og:image" content="https://port-haven.orry.space/favicon.png">
+<link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  /* Eén wereld: diepzee-nacht met goud en perkament, zoals de community-logo's.
-     Layout: smalle leeskolom, secties als hoofdstukken, schema's breken eruit. */
-  --sea: #0e242a;
-  --sea-2: #16353d;
-  --sea-3: #1f4750;
-  --gold: #d9b45f;
-  --gold-soft: #f0d48a;
-  --parchment: #f3e6c7;
-  --ink: #e9eef0;
-  --ink-dim: #a9bcc0;
-  --ok: #7fc59a;
-  --bad: #e07a6a;
-  --display: "Cinzel", "Trajan Pro", Georgia, serif;
-  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
-body {
-  margin: 0;
-  background: var(--sea);
-  background-image: radial-gradient(ellipse at 50% -10%, #23505a 0%, transparent 60%);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 1.125rem;
-  line-height: 1.6;
-}
-a { color: var(--gold-soft); }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; border-radius: 6px; }
-.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-.read { max-width: 68ch; }
-h1, h2, h3 { font-family: var(--display); color: var(--gold-soft); text-wrap: balance; line-height: 1.2; font-weight: 700; }
-h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; letter-spacing: 0.04em; }
-h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin: 0 0 0.6rem; letter-spacing: 0.03em; }
-h3 { font-size: 1.1rem; margin: 0 0 0.3rem; letter-spacing: 0.04em; }
-p { margin: 0 0 1rem; }
-.dim { color: var(--ink-dim); }
-.en { font-style: italic; color: var(--ink-dim); }
-
-/* hero */
-header { padding: 48px 0 28px; }
-.hero { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
-.hero svg { width: 120px; height: 120px; flex: none; }
-.hero .kicker { font-family: var(--display); color: var(--gold); letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 6px; }
-.hero p { margin: 10px 0 0; max-width: 52ch; color: var(--ink-dim); }
-
-nav { position: sticky; top: 0; z-index: 5; background: rgba(14,36,42,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(217,180,95,0.25); }
-nav ol { list-style: none; margin: 0 auto; padding: 10px 20px; max-width: 980px; display: flex; gap: 6px 18px; flex-wrap: wrap; font-size: 0.95rem; counter-reset: n; }
-nav li { counter-increment: n; }
-nav a { text-decoration: none; color: var(--ink-dim); }
-nav a::before { content: counter(n) ". "; color: var(--gold); }
-nav a:hover { color: var(--gold-soft); }
-
-section { padding: 44px 0; border-bottom: 1px solid rgba(217,180,95,0.14); }
-section:last-of-type { border-bottom: 0; }
-.chapter { font-family: var(--display); color: var(--gold); font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; }
-
-.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 18px; }
-.card { background: var(--sea-2); border: 1px solid rgba(217,180,95,0.22); border-radius: 12px; padding: 16px 18px; }
-.card p { margin: 0; color: var(--ink-dim); font-size: 1rem; }
-
-/* dice */
-.dice { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-top: 18px; }
-.die { text-align: center; background: var(--sea-2); border-radius: 12px; padding: 14px 8px 10px; border: 1px solid rgba(217,180,95,0.18); }
-.die svg { width: 56px; height: 56px; }
-.die b { display: block; font-family: var(--display); color: var(--gold-soft); margin-top: 4px; }
-.die span { font-size: 0.9rem; color: var(--ink-dim); }
-.die.main { border-color: var(--gold); background: var(--sea-3); }
-
-/* kernregel */
-.formula { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
-.tile { background: var(--parchment); color: #2c1d0e; border-radius: 12px; padding: 12px 18px; text-align: center; min-width: 120px; box-shadow: 0 6px 0 rgba(0,0,0,0.25); }
-.tile b { display: block; font-family: var(--display); font-size: 1.6rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.tile small { font-size: 0.85rem; color: #6b5233; }
-.op { font-family: var(--display); font-size: 2rem; color: var(--gold); }
-.roller { background: var(--sea-2); border: 1px solid var(--gold); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
-.roller-row { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
-.roller label { font-size: 0.95rem; color: var(--ink-dim); }
-.roller select { font: inherit; background: var(--sea); color: var(--ink); border: 1px solid rgba(217,180,95,0.5); border-radius: 8px; padding: 6px 10px; }
-button.roll { font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; background: var(--gold); color: #2b1c08; border: 0; border-radius: 999px; padding: 10px 22px; cursor: pointer; }
-button.roll:hover { background: var(--gold-soft); }
-.result { font-size: 1.15rem; min-height: 1.8em; font-variant-numeric: tabular-nums; }
-.result .yes { color: var(--ok); font-weight: 700; }
-.result .no { color: var(--bad); font-weight: 700; }
-.kinds { margin-top: 18px; }
-
-.callout { border-left: 4px solid var(--gold); background: rgba(217,180,95,0.08); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 18px 0; }
-.callout p:last-child { margin: 0; }
-
-/* abilities */
-.abil { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
-@media (max-width: 560px) { .abil { grid-template-columns: repeat(2, 1fr); } }
-.ab { background: var(--sea-2); border-radius: 12px; padding: 12px 14px; border-top: 3px solid var(--gold); }
-.ab b { font-family: var(--display); color: var(--gold-soft); letter-spacing: 0.08em; }
-.ab div { font-size: 0.95rem; color: var(--ink-dim); }
-
-/* beurt */
-.turn { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 18px; }
-.turn .card { position: relative; padding-top: 44px; }
-.badge { position: absolute; top: 12px; left: 18px; font-family: var(--display); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sea); background: var(--gold); border-radius: 999px; padding: 2px 10px; }
-.badge.opt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
-
-/* cyclus */
-.cycle { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); counter-reset: s; }
-.cycle li { counter-increment: s; background: var(--sea-2); border: 1px solid rgba(217,180,95,0.25); border-radius: 14px; padding: 16px 18px 16px 64px; position: relative; }
-.cycle li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--sea); font-family: var(--display); font-weight: 700; display: grid; place-items: center; }
-.cycle li p { margin: 0; font-size: 1rem; color: var(--ink-dim); }
-.cycle li.out { background: #2a2016; border-color: rgba(240,212,138,0.45); }
-.loop { margin-top: 12px; text-align: center; color: var(--gold); font-family: var(--display); letter-spacing: 0.08em; }
-@media (max-width: 760px) { .cycle { grid-template-columns: 1fr; } }
-
-.board { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 18px; }
-.note { background: var(--parchment); color: #2c1d0e; border-radius: 4px; padding: 26px 16px 16px; position: relative; box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
-.note:nth-child(odd) { transform: rotate(-1.2deg); }
-.note:nth-child(even) { transform: rotate(1deg); }
-.note::before { content: ""; position: absolute; top: 8px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #f6e2a4, #a9853a); }
-.note h3 { color: #5a1d22; }
-.note p { margin: 0; font-size: 1rem; }
-
-/* checklist */
-.check { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
-.check li { display: flex; gap: 12px; align-items: flex-start; background: var(--sea-2); border-radius: 10px; padding: 12px 14px; }
-.check svg { flex: none; width: 22px; height: 22px; margin-top: 3px; }
-
-/* woordenlijst */
-dl.words { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 18px 0 0; }
-dl.words dt { font-family: var(--display); color: var(--gold-soft); font-weight: 700; }
-dl.words dd { margin: 0; color: var(--ink-dim); }
-@media (max-width: 480px) { dl.words { grid-template-columns: 1fr; gap: 2px; } dl.words dd { margin-bottom: 10px; } }
-
-footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="wrap hero">
-    <svg viewBox="0 0 1024 1024" aria-hidden="true">
-      <defs>
-        <radialGradient id="hsea" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#2b5c63"/><stop offset="0.6" stop-color="#173a42"/><stop offset="1" stop-color="#0b1f25"/></radialGradient>
-        <linearGradient id="hgold" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="880"><stop offset="0" stop-color="#f0d48a"/><stop offset="0.55" stop-color="#d9b45f"/><stop offset="1" stop-color="#a9853a"/></linearGradient>
-      </defs>
-      <circle cx="512" cy="512" r="440" fill="url(#hsea)"/>
-      <g transform="translate(512 506) scale(1.06) translate(-512 -530)">
-        <g fill="none" stroke="url(#hgold)" stroke-linecap="round">
-          <circle cx="512" cy="292" r="40" stroke-width="24"/>
-          <line x1="512" y1="334" x2="512" y2="760" stroke-width="30"/>
-          <line x1="402" y1="400" x2="622" y2="400" stroke-width="28"/>
-          <path d="M 318 590 Q 326 772 512 778 Q 698 772 706 590" stroke-width="28"/>
-        </g>
-        <g fill="url(#hgold)"><polygon points="286,628 318,548 362,616"/><polygon points="738,628 706,548 662,616"/></g>
-      </g>
-      <circle cx="512" cy="512" r="440" fill="none" stroke="url(#hgold)" stroke-width="12"/>
-    </svg>
-    <div>
-      <div class="kicker">Port Haven</div>
-      <h1>D&amp;D voor beginners</h1>
-      <p>Nog nooit D&amp;D gespeeld? Geen probleem. Deze gids legt in tien minuten uit hoe het spel werkt. De rest leer je aan tafel.</p>
-    </div>
-  </div>
+<header class="signboard">
+  <a class="home" href="index.html"><img src="emblem.svg" alt=""><span class="wordmark">Port Haven</span></a>
+  <nav aria-label="Hoofdmenu">
+    <button class="menu-toggle" type="button" aria-expanded="false">Menu</button>
+    <ul><li><a class="page" href="index.html">Welkom</a></li><li><a class="page" href="campagne.html">De campagne</a></li><li><a class="page" href="prikbord.html">Het prikbord</a></li><li><a class="page" href="beginners.html" aria-current="page">D&amp;D spelen</a></li><li><a class="page" href="personage.html">Personage maken</a></li></ul>
+  </nav>
 </header>
 
-<nav aria-label="Inhoud"><ol><li><a href="#wat-is-dnd">Wat is D&amp;D?</a></li><li><a href="#dobbelstenen">Dobbelstenen</a></li><li><a href="#kernregel">De kernregel</a></li><li><a href="#personage">Je personage</a></li><li><a href="#gevecht">Je beurt</a></li><li><a href="#eerste-sessie">Je eerste keer</a></li><li><a href="#woordenlijst">Woordenlijst</a></li></ol></nav>
-
-<main class="wrap">
+<main>
+<div class="hero wrap"><h1>D&amp;D voor beginners</h1><p>Nog nooit D&amp;D gespeeld? Geen probleem. Deze gids legt in tien minuten uit hoe het spel werkt. De rest leer je aan tafel.</p></div>
+<div class="onpage wrap">Op deze pagina<br><ul><li><a href="#wat-is-dnd">Wat is D&amp;D?</a></li><li><a href="#dobbelstenen">De dobbelstenen</a></li><li><a href="#kernregel">De enige regel die je echt moet kennen</a></li><li><a href="#personage">Je personage</a></li><li><a href="#gevecht">Je beurt in een gevecht</a></li><li><a href="#eerste-sessie">Je eerste keer</a></li><li><a href="#woordenlijst">Woordenlijst</a></li></ul></div>
+<div class="wrap">
 <section id="wat-is-dnd">
-  <div class="chapter">Hoofdstuk 1</div>
+  <div class="chapter">Deel 1</div>
   <h2>Wat is D&amp;D?</h2>
+
   <div class="read">
     <p>Dungeons &amp; Dragons is een verhaal dat je samen vertelt. Er is geen bord en niemand wint of verliest. Jullie verkennen een wereld, lossen problemen op en vechten soms tegen monsters. Alles kan, zolang je personage het zou kunnen proberen.</p>
   </div>
@@ -187,11 +43,12 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="card"><h3>Jij</h3><p>Je speelt één personage. Je zegt wat het doet of zegt. Dat is het belangrijkste: <em>vertel wat je wil doen</em>.</p></div>
     <div class="card"><h3>De dobbelstenen</h3><p>Is het spannend of onzeker of iets lukt? Dan beslissen de dobbelstenen. Een goede worp is fijn, een slechte zorgt voor de beste verhalen.</p></div>
   </div>
-</section>
 
+</section>
 <section id="dobbelstenen">
-  <div class="chapter">Hoofdstuk 2</div>
+  <div class="chapter">Deel 2</div>
   <h2>De dobbelstenen</h2>
+
   <div class="read"><p>D&amp;D gebruikt zeven soorten dobbelstenen. Een "d" met een getal betekent: een dobbelsteen met zoveel kanten. <b>2d6</b> is dus twee zeskantige dobbelstenen gooien en optellen. Eén steen doet bijna al het werk: de <b>d20</b>.</p></div>
   <div class="dice">
     <div class="die"><svg viewBox="0 0 60 60"><polygon points="30,6 54,50 6,50" fill="none" stroke="#d9b45f" stroke-width="3" stroke-linejoin="round"/></svg><b>d4</b><span>kleine schade</span></div>
@@ -202,12 +59,13 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="die main"><svg viewBox="0 0 60 60"><polygon points="30,3 53,16 53,44 30,57 7,44 7,16" fill="none" stroke="#f0d48a" stroke-width="3" stroke-linejoin="round"/><polygon points="30,14 44,38 16,38" fill="none" stroke="#f0d48a" stroke-width="2" stroke-linejoin="round"/></svg><b>d20</b><span>lukt het?</span></div>
     <div class="die"><svg viewBox="0 0 60 60"><polygon points="30,4 54,26 30,56 6,26" fill="none" stroke="#d9b45f" stroke-width="3" stroke-linejoin="round"/><text x="30" y="34" text-anchor="middle" font-size="12" fill="#d9b45f" font-family="Cinzel, serif">%</text></svg><b>d100</b><span>twee d10's</span></div>
   </div>
-  <p class="dim" style="margin-top:14px">Geen dobbelstenen? Geen probleem: de app van D&amp;D Beyond gooit ze ook voor je.</p>
-</section>
+  <p class="dim mt">Geen dobbelstenen? Geen probleem: de app van D&amp;D Beyond gooit ze ook voor je.</p>
 
+</section>
 <section id="kernregel">
-  <div class="chapter">Hoofdstuk 3</div>
+  <div class="chapter">Deel 3</div>
   <h2>De enige regel die je echt moet kennen</h2>
+
   <div class="read"><p>Wil je iets doen waarvan niet zeker is of het lukt? Dan gooi je een d20 en tel je je bonus erbij. Is het totaal gelijk aan of hoger dan het doelgetal, dan lukt het. Dat doelgetal heet de <span class="en">DC</span> (Difficulty Class) en bepaalt de DM.</p></div>
 
   <div class="formula" aria-label="d20 plus bonus, minstens het doelgetal">
@@ -239,7 +97,7 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="result" id="result" aria-live="polite">Klik op de knop om te gooien.</div>
   </div>
 
-  <h3 style="margin-top:26px">Drie soorten d20-worpen</h3>
+  <h3 class="mt-lg">Drie soorten d20-worpen</h3>
   <div class="grid kinds">
     <div class="card"><h3>Ability check</h3><p>Lukt het? Klimmen, liegen, een slot openen, sporen zoeken.</p></div>
     <div class="card"><h3>Saving throw</h3><p>Ontwijk je het gevaar? Een val, gif, een vuurbal.</p></div>
@@ -249,11 +107,12 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
   <div class="callout">
     <p><b>Advantage en disadvantage.</b> Heb je een voordeel, gooi dan twee d20's en neem de hoogste. Zit alles tegen, gooi er twee en neem de laagste. Simpel, en je hoort het vaak.</p>
   </div>
-</section>
 
+</section>
 <section id="personage">
-  <div class="chapter">Hoofdstuk 4</div>
+  <div class="chapter">Deel 4</div>
   <h2>Je personage</h2>
+
   <div class="read">
     <p>Je personage bestaat uit drie keuzes: een <span class="en">species</span> (mens, elf, dwerg …), een <span class="en">class</span> (wat je kan: vechter, tovenaar, dief …) en een <span class="en">background</span> (wat je deed voor je avonturier werd). Alles staat op je <span class="en">character sheet</span>. Iedereen start op <b>level 1</b>.</p>
     <p>Elk personage heeft zes eigenschappen. Hoe hoger, hoe groter je bonus als je ze gebruikt.</p>
@@ -267,11 +126,12 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="ab"><b>CHA</b><div>Charisma: overtuigen, bluffen, uitstraling</div></div>
   </div>
   <div class="callout"><p><b>Hit Points (HP)</b> zijn je levenspunten. Raak je op 0, dan val je bewusteloos. Je groep kan je dan nog redden, dus blijf bij elkaar.</p></div>
-</section>
 
+</section>
 <section id="gevecht">
-  <div class="chapter">Hoofdstuk 5</div>
+  <div class="chapter">Deel 5</div>
   <h2>Je beurt in een gevecht</h2>
+
   <div class="read"><p>Bij een gevecht gooit iedereen voor <span class="en">initiative</span>: dat bepaalt de volgorde. Daarna is het om de beurt. Op jouw beurt mag je dit doen:</p></div>
   <div class="turn">
     <div class="card"><span class="badge">Move</span><h3>Bewegen</h3><p>Zo ver als je speed toelaat, meestal 30 voet. Je mag je beweging opsplitsen.</p></div>
@@ -279,24 +139,27 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="card"><span class="badge opt">Bonus action</span><h3>Soms extra</h3><p>Alleen als je class of een spreuk je er een geeft. Je character sheet zegt het.</p></div>
     <div class="card"><span class="badge opt">Reaction</span><h3>Buiten je beurt</h3><p>Eén keer per ronde, als iets gebeurt. Bijvoorbeeld een vijand aanvallen die wegloopt.</p></div>
   </div>
-  <p class="dim" style="margin-top:14px">Praten mag altijd. Een korte zin roepen tijdens je beurt kost niets.</p>
-</section>
+  <p class="dim mt">Praten mag altijd. Een korte zin roepen tijdens je beurt kost niets.</p>
 
+</section>
 <section id="eerste-sessie">
-  <div class="chapter">Hoofdstuk 6</div>
+  <div class="chapter">Deel 6</div>
   <h2>Je eerste keer</h2>
-  <ul class="check">
-    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Maak je personage samen met de DM.</b> Je hoeft dat niet alleen uit te zoeken. Iedereen start op level 1.</div></li>
+
+  <ul class="check mt">
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Maak je personage.</b> Je hoeft dat niet alleen uit te zoeken: <a href="personage.html">zo maak je het</a>. Iedereen start op level 1.</div></li>
     <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Maak een gratis account op D&amp;D Beyond.</b> Daar kan je je character sheet bijhouden en dobbelstenen gooien.</div></li>
     <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#d9b45f" stroke-width="2"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#f0d48a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Je hoeft de regels niet te kennen.</b> Zeg wat je wil doen, de DM vertelt je wat je moet gooien.</div></li>
   </ul>
   <div class="callout">
     <p><b>Meer lezen?</b> De officiële regels zijn gratis te lezen op D&amp;D Beyond: <a href="https://www.dndbeyond.com/posts/1804-start-playing-today-with-the-2024-d-d-free-rules">de D&amp;D Free Rules (2024)</a>. Wij spelen met die regels (D&amp;D 5.5).</p>
   </div>
+
 </section>
 <section id="woordenlijst">
-  <div class="chapter">Hoofdstuk 7</div>
+  <div class="chapter">Deel 7</div>
   <h2>Woordenlijst</h2>
+
   <dl class="words">
     <dt>DM</dt><dd>Dungeon Master: de spelleider</dd>
     <dt>PC</dt><dd>Player Character: het personage van een speler</dd>
@@ -309,31 +172,14 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <dt>Level</dt><dd>Hoe ervaren je personage is. Iedereen start op level 1.</dd>
     <dt>Rest</dt><dd>Uitrusten: een short rest (een uurtje) of een long rest (een nacht)</dd>
   </dl>
-</section>
 
-<section id="verder">
-  <div class="callout"><p><b>Klaar met de basis?</b> Lees dan hoe onze campagne werkt: <a href="index.html">Zo werkt Port Haven</a>.</p></div>
 </section>
-
+</div>
 </main>
 
 <footer>
-  <div class="wrap">Vragen? Stel ze in 🍺 De Herberg. Tot in Port Haven.</div>
+  <div class="wrap"><p>Vragen? Stel ze in 🍺 De Herberg. Tot in Port Haven.</p><p>Laatst bijgewerkt: 5 november 2026</p></div>
 </footer>
-<script>
-(function () {
-  var btn = document.getElementById('rollBtn');
-  var out = document.getElementById('result');
-  btn.addEventListener('click', function () {
-    var bonus = parseInt(document.getElementById('bonus').value, 10);
-    var dc = parseInt(document.getElementById('dc').value, 10);
-    var d = Math.floor(Math.random() * 20) + 1;
-    var total = d + bonus;
-    var ok = total >= dc;
-    out.innerHTML = 'Je gooit <b>' + d + '</b> + ' + bonus + ' = <b>' + total + '</b> tegen DC ' + dc + ': ' +
-      (ok ? '<span class="yes">gelukt, je staat bovenop de muur.</span>' : '<span class="no">mislukt, je glijdt terug naar beneden.</span>');
-  });
-})();
-</script>
+<script src="site.js"></script>
 </body>
 </html>
