@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+      <defs>
+        <radialGradient id="hsea" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#2b5c63"/><stop offset="0.6" stop-color="#173a42"/><stop offset="1" stop-color="#0b1f25"/></radialGradient>
+        <linearGradient id="hgold" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="880"><stop offset="0" stop-color="#f0d48a"/><stop offset="0.55" stop-color="#d9b45f"/><stop offset="1" stop-color="#a9853a"/></linearGradient>
+      </defs>
+      <circle cx="512" cy="512" r="440" fill="url(#hsea)"/>
+      <g transform="translate(512 506) scale(1.06) translate(-512 -530)">
+        <g fill="none" stroke="url(#hgold)" stroke-linecap="round">
+          <circle cx="512" cy="292" r="40" stroke-width="24"/>
+          <line x1="512" y1="334" x2="512" y2="760" stroke-width="30"/>
+          <line x1="402" y1="400" x2="622" y2="400" stroke-width="28"/>
+          <path d="M 318 590 Q 326 772 512 778 Q 698 772 706 590" stroke-width="28"/>
+        </g>
+        <g fill="url(#hgold)"><polygon points="286,628 318,548 362,616"/><polygon points="738,628 706,548 662,616"/></g>
+      </g>
+      <circle cx="512" cy="512" r="440" fill="none" stroke="url(#hgold)" stroke-width="12"/>
+    </svg>
