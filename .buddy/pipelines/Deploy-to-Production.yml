@@ -5,4 +5,12 @@
   fail_on_prepare_env_warning: true
   resources: NANO
   events:
-  - type: WEBHOOK
+  - type: PUSH
+    refs:
+    - refs/tags/*
+  actions:
+  - action: Deploy production
+    type: SSH_COMMAND
+    commands: deploy-laravel parkpop production
+    targets:
+    - orry_space
