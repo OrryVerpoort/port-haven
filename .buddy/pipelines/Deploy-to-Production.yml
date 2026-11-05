@@ -11,6 +11,11 @@
   actions:
   - action: Deploy production
     type: SSH_COMMAND
-    commands: git pull
+    commands: |-
+      set -e
+      cd /var/www/port-haven/production
+      git fetch origin main
+      git reset --hard origin/main
+      git log -1 --oneline
     targets:
     - orry_space
