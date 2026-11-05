@@ -11,6 +11,6 @@
   actions:
   - action: Deploy production
     type: SSH_COMMAND
-    commands: deploy-laravel parkpop production
+    commands: git pull
     targets:
     - orry_space
