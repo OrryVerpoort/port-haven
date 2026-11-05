@@ -274,3 +274,24 @@ footer p { margin: 0 0 4px; }
   .note { transform: none; border: 1px solid #ccc; }
   a { color: inherit; text-decoration: none; }
 }
+
+/* het dorp: plaatsen en figuren */
+.places { display: grid; gap: var(--space-28); margin-top: var(--space-18); }
+.place { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-22); align-items: center; }
+.place:nth-child(even) { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+.place:nth-child(even) img { order: 2; }
+.place img, .figure img { width: 100%; height: auto; display: block; border-radius: var(--radius-note); }
+.place h3, .figure h3 { font-size: 1.35rem; }
+.place p, .figure p { color: var(--ink-dim); }
+.place .here { font-size: 0.95rem; margin: 0; }
+.figures { display: grid; gap: var(--space-22); margin-top: var(--space-18); }
+.figure { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-22); align-items: center; background: var(--sea-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-18); }
+.figure .role { font-family: var(--display); font-weight: 500; color: var(--gold); margin: 0 0 var(--space-10); }
+.figure blockquote { margin: 0; font-style: italic; color: var(--gold-soft); font-size: 1.15rem; }
+@media (max-width: 760px) {
+  .place, .place:nth-child(even) { grid-template-columns: 1fr; }
+  .place:nth-child(even) img { order: 0; }
+  .figure { grid-template-columns: 1fr; }
+  .figure img { max-width: 260px; margin: 0 auto; }
+}
+@media print { .place img, .figure img { max-width: 50%; } .figure { border: 1px solid #ccc; } }
