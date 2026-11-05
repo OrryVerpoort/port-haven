@@ -99,6 +99,7 @@ button.roll:hover { background: var(--gold-soft); }
 
 .callout { border-left: 4px solid var(--gold); background: rgba(217,180,95,0.08); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 18px 0; }
 .callout p:last-child { margin: 0; }
+.test { display: inline-block; vertical-align: middle; font-family: var(--display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); border-radius: 999px; padding: 1px 9px; margin-left: 6px; }
 
 /* abilities */
 .abil { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
@@ -198,9 +199,9 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
       <circle cx="512" cy="512" r="440" fill="none" stroke="url(#hgold)" stroke-width="12"/>
     </svg>
     <div>
-      <div class="kicker">Het Verloren Land</div>
+      <div class="kicker">Port Haven</div>
       <h1>Zo werkt Port Haven</h1>
-      <p>De mist is opgetrokken en het Verloren Land ligt open. Port Haven is een mini dorpje aan de enige veilige baai van de kust. Hier lees je hoe onze campagne werkt.</p>
+      <p>Lange tijd lag dit land verloren onder de mist. Nu is de mist opgetrokken en ligt het open. Port Haven is een mini dorpje aan de enige veilige baai van de kust. Hier lees je hoe onze campagne werkt.</p>
     </div>
   </div>
 </header>
@@ -218,7 +219,7 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
 
   <ol class="cycle">
     <li><h3>Prikbord</h3><p>Er hangt een job, bounty, gezochte zaak of gerucht in 📌 Prikbord.</p></li>
-    <li><h3>Party vormen</h3><p>Zoek in 🍺 De Herberg een groepje van 3 à 4 spelers.</p></li>
+    <li><h3>Party vormen</h3><p>Spreek in 🍺 De Herberg onderling af wie meegaat: een groepje van 3 à 4 spelers. Dat regelen jullie zelf.</p></li>
     <li><h3>Data afspreken</h3><p>Samen met de DM. Liefst 1 sessie per week, hooguit om de 2 weken, plus een paar reservedata.</p></li>
     <li class="out"><h3>Op avontuur</h3><p>Buiten het dorp, in het onbekende. 1 à 3 sessies.</p></li>
     <li><h3>Terug in Port Haven</h3><p>Elk avontuur eindigt terug in het dorp.</p></li>
@@ -231,7 +232,8 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
   <div class="chapter">Deel 2</div>
   <h2>Het dorp</h2>
   <div class="read">
-    <p>Port Haven is nog piepklein: een herberg, met het prikbord, en wat tenten om in te slapen. Meer is er niet. Nog niet.</p>
+    <p>Port Haven is gevestigd tussen ruïnes. Het is nog piepklein: een herberg, met het prikbord, en wat tenten om in te slapen. Meer is er niet. Nog niet.</p>
+    <p>Elke keer komen er nieuwe avonturiers aan per schip. Daarom start iedereen op level 1.</p>
     <p>Wat jullie buiten het dorp ontdekken en veilig maken, komt terug naar Port Haven. Zo groeit het dorp, stukje per stukje, ook op de kaart. Hoe Port Haven er over een jaar uitziet, hangt helemaal van jullie af.</p>
   </div>
 </section>
@@ -245,12 +247,14 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="note"><h3>Gezocht</h3><p>Iemand zoekt een voorwerp, materiaal of een vermiste persoon.</p></div>
     <div class="note"><h3>Gerucht</h3><p>Wat er verteld wordt. Waar of niet? Zoek het zelf uit.</p></div>
   </div>
-  <p class="dim" style="margin-top:18px">Bij een avontuur staat altijd het gevaar (CR, zie onderaan), een levelbereik, hoeveel sessies het naar verwachting duurt en hoeveel AP het oplevert. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
+  <p class="dim" style="margin-top:18px">Bij een avontuur staat meestal het gevaar (CR, zie onderaan), een levelbereik, hoeveel sessies het naar verwachting duurt en hoeveel AP het oplevert. Niet altijd: bij een gerucht weet niemand precies wat je te wachten staat, en ook een job kan je het onbekende in sturen. Wat er geweten is, staat erbij. Een gerucht dat je niet loslaat? Stel in De Herberg een expeditie voor.</p>
+  <p class="dim">De beloning is voor de hele party. Jullie verdelen ze zelf. <span class="test">in test</span></p>
 
   </section>
 <section id="levelen">
   <div class="chapter">Deel 4</div>
-  <h2>Levelen</h2>
+  <h2>Levelen <span class="test">in test</span></h2>
+  <div class="read"><p class="dim">Dit levelsysteem testen we nog. Het kan nog wijzigen als blijkt dat het te snel of te traag gaat.</p></div>
   <div class="read"><p>Iedereen start op level 1. Je stijgt in level met <b>Adventure Points (AP)</b>. Die krijg je per avontuur, volgens hoe lang het gepland is:</p></div>
   <div class="pts">
     <div class="tile"><b>1 AP</b><small>avontuur van 1 avond</small></div>
@@ -280,6 +284,8 @@ footer { padding: 30px 0 50px; color: var(--ink-dim); font-size: 0.95rem; }
     <div class="card"><h3>Open tafel</h3><p>Een pool van spelers. Elk avontuur speelt een ander groepje van 3 à 4. We spelen met D&amp;D 5.5 (2024).</p></div>
     <div class="card"><h3>Data</h3><p>Afspreken samen met de DM. Sessies liggen dicht bij elkaar: liefst 1 per week, hooguit om de 2 weken. Plus een paar reservedata; wat niet nodig is, valt weer vrij.</p></div>
     <div class="card"><h3>Geen vaste avond</h3><p>Elk avontuur krijgt zijn eigen data en dag. Er kunnen rustweken tussen zitten.</p></div>
+    <div class="card"><h3>Vaste party</h3><p>De party ligt vast bij de start. Niemand valt halverwege in.</p></div>
+    <div class="card"><h3>Eén avontuur tegelijk</h3><p>Er kunnen avonturen tegelijk lopen, maar jij zit er altijd maar in één.</p></div>
     <div class="card"><h3>Altijd terug</h3><p>Elk avontuur eindigt terug in Port Haven. In het dorp zelf gebeuren geen avonturen.</p></div>
   </div>
   <div class="callout">
